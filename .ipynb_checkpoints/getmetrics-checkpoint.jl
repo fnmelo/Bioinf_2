@@ -32,11 +32,11 @@ function getperformance(
     # Generate confusion matrix and common metrics
     thresholds = sort(unique(score))
 
-    confusion = roc(tp, score, thresholds)
+    confusion =MLBase.roc(tp, score, thresholds)
     recalls = SimSpread.recall.(confusion)
     precisions = SimSpread.precision.(confusion)
-    tprs = true_negative_rate.(confusion)
-    fprs = false_negative_rate.(confusion)
+    tprs =MLBase.true_negative_rate.(confusion)
+    fprs =MLBase.false_negative_rate.(confusion)
 
     # Standard metrics
     auprc = SimSpread.AuPRC(tp, score)
@@ -89,11 +89,11 @@ function getperformance(
         # Confusion matrix
         thresholds = sort(unique(score))
 
-        confusion = roc(tp, score, thresholds)
+        confusion =MLBase.roc(tp, score, thresholds)
         recalls = SimSpread.recall.(confusion)
         precisions = SimSpread.precision.(confusion)
-        tprs = true_negative_rate.(confusion)
-        fprs = false_negative_rate.(confusion)
+        tprs =MLBase.true_negative_rate.(confusion)
+        fprs =MLBase.false_negative_rate.(confusion)
 
         # Standard metrics
         auprc = SimSpread.AuPRC(tp, score)
